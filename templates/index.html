@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>On-Call Engineers</title>
+
+</head>
+
+<body>
+
+	<table>
+	<tr>
+		<th>Escalation Policy</th>
+		<th>On-Call User</th>
+	</tr>
+	
+	{% for oncall in oncalls %}
+	
+		<tr>
+			<!-- JSON can be parsed just like a Python dictionary! -->
+			<td>{{ oncall['escalation_policy']['summary'] }}</td>
+			<td>{{ oncall['user']['summary'] }}</td>
+		</tr>
+
+	{% endfor %}
+
+</table>
+</body>
+
+</html>
