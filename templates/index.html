@@ -13,14 +13,18 @@
 	<tr>
 		<th>Escalation Policy</th>
 		<th>On-Call User</th>
+		<th>Phone Number</th>
 	</tr>
 	
 	{% for oncall in oncalls %}
 	
 		<tr>
 			<!-- JSON can be parsed just like a Python dictionary! -->
-			<td>{{ oncall['escalation_policy']['summary'] }}</td>
-			<td>{{ oncall['user']['summary'] }}</td>
+			<!-- {user_id: [ep_name, user_name, phone_num]} -->
+
+			<td>{{ oncalls[oncall][0] }}</td>
+			<td>{{ oncalls[oncall][1] }}</td>
+			<td>{{ oncalls[oncall][2] }}</td>
 		</tr>
 
 	{% endfor %}
