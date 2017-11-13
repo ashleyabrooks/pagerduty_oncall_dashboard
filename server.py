@@ -9,7 +9,7 @@ app = Flask(__name__)
 def display_oncalls():
     """Display on-calls."""
 
-    API_KEY = '' # Your API key here
+    API_KEY = 'WTS8E_CuvcyrnLHEy_JR' # Your API key here
     
     headers = {
         'Accept': 'application/vnd.pagerduty+json;version=2',
@@ -20,6 +20,10 @@ def display_oncalls():
     # https://v2.developer.pagerduty.com/v2/page/api-reference#!/On-Calls/get_oncalls
     # Just add params=payload to the GET request below like so:
     # r = requests.get(url, headers=headers, params=payload)
+    
+    # To specify a list of escalation policies or schedules, URL encode them like this:
+    # r = requests.get("https://api.pagerduty.com/oncalls?escalation_policy_ids[]=PZJFPAL", headers=headers)
+    # For more info: https://v2.developer.pagerduty.com/v2/page/api-reference#!/On-Calls/get_oncalls
     
     r = requests.get("https://api.pagerduty.com/oncalls", headers=headers)
 
