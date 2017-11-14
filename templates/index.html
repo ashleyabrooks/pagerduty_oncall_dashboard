@@ -14,6 +14,8 @@
 		<th>Escalation Policy</th>
 		<th>On-Call User</th>
 		<th>Phone Number</th>
+		<th>Shift Start</th>
+		<th>Shift End</th>
 	</tr>
 	
 	{% for oncall in oncalls %}
@@ -25,6 +27,8 @@
 			<td>{{ oncalls[oncall][0] }}</td>
 			<td>{{ oncalls[oncall][1] }}</td>
 			<td>{{ oncalls[oncall][2] }}</td>
+			<td>{{ oncalls[oncall][3] }}</td>
+			<td>{{ oncalls[oncall][4] }}</td>
 		</tr>
 
 	{% endfor %}

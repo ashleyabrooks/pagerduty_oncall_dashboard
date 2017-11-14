@@ -9,7 +9,7 @@ app = Flask(__name__)
 def display_oncalls():
     """Display on-calls."""
 
-    API_KEY = 'WTS8E_CuvcyrnLHEy_JR' # Your API key here
+    API_KEY = '' # Your API key here
     
     headers = {
         'Accept': 'application/vnd.pagerduty+json;version=2',
@@ -34,6 +34,8 @@ def display_oncalls():
         user_id = oncall['user']['id']
         user_name = oncall['user']['summary']
         ep_name = oncall['escalation_policy']['summary']
+        shift_start = oncall['start']
+        shift_end = oncall['end']
 
         r = requests.get("https://api.pagerduty.com/users/{}/contact_methods?type=phone_contact_method".format(user_id), headers=headers)
 
@@ -42,7 +44,7 @@ def display_oncalls():
         else:
             phone_num = "No phone number specified"
 
-        oncall_data[user_id] = [ep_name, user_name, phone_num]
+        oncall_data[user_id] = [ep_name, user_name, phone_num, shift_start, shift_end]
 
     # Passing the JSON body to the Jinja template in templates/index.html
     return render_template("index.html", oncalls=oncall_data)
